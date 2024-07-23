@@ -28,7 +28,6 @@ There's no page link for this project
 
 ## Screenshots
 
-The following image shows the web application's appearance and functionality:\
-Main page
-
-![Screenshot of main page](./assets/images/homepage.png)
+The following image shows the result of index.js:\
+Screenshot\
+![markdown image](./assets/images/readme.png)
