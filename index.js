@@ -4,42 +4,72 @@ const fs = require("fs");
 const generateREADME = ({
   title,
   description,
-  dependencies,
   installation,
-  execution,
-  authors,
+  usage,
+  contributing,
+  tests,
+  githubUsername,
+  emailAddress,
   license,
   badgeURL,
 }) =>
   // Template for the README file
   `# ${title}
 
-## Description
-
-${description}
-
-## Dependencies
-
-${dependencies}
-
-## Installing
-
-${installation}
-
-## Executing program
-
-${execution}
-
-## Authors
-
-Contributors names
-
-${authors}
-
 ## License
 
 ${badgeURL}\n
 This project is licensed under the ${license} License - see the LICENSE.md file for details
+
+  ## Table of Contents
+<ol>
+<li>
+<a href="#description"> Description </a>
+</li>
+<li><a href="#installation"> Installation </a>
+</li>
+<li><a href="#usage"> Usage </a>
+</li>
+<li>
+<a href="#license"> License </a>
+</li>
+<li><a href="#contributing"> Contributing </a>
+</li>
+<li><a href="#tests"> Tests </a>
+</li>
+<li>
+<a href="#questions"> Questions </a>
+</li>
+
+
+</ol>
+
+## Description
+
+${description}
+
+## Installation
+
+${installation}
+
+## Usage
+
+${usage}
+
+
+## Contributing
+
+${contributing}
+
+## Tests
+
+${tests}
+
+## Questions
+
+If you have any questions, please open an issue or contact me directly.<br>
+Email: ${emailAddress}<br>
+Github: [Github repo link](https://github.com/${githubUsername}).
 `;
 
 // Inquirer prompt where the inputs are collected
@@ -57,24 +87,39 @@ inquirer
     },
     {
       type: "input",
-      name: "dependencies",
-      message: "What are the dependencies of your project?",
-    },
-    {
-      type: "input",
       name: "installation",
       message: "Any installation instructions?",
     },
     {
       type: "input",
-      name: "execution",
-      message: "How do you execute this project?",
+      name: "usage",
+      message: "What is the usage of this project?",
     },
     {
       type: "input",
-      name: "authors",
-      message:
-        "Who are the authors of this project? (Please separate by commas)",
+      name: "contributing",
+      message: "How can a user contribute to this project?",
+    },
+    {
+      type: "input",
+      name: "tests",
+      message: "How can a user test this project?",
+    },
+    // {
+    //   type: "input",
+    //   name: "authors",
+    //   message:
+    //     "Who are the authors of this project? (Please separate by commas)",
+    // },
+    {
+      type: "input",
+      name: "githubUsername",
+      message: "What is your Github username?",
+    },
+    {
+      type: "input",
+      name: "emailAddress",
+      message: "What is your email address?",
     },
     {
       type: "list",
@@ -88,8 +133,8 @@ inquirer
     console.log(answers);
 
     // separate the authors by commas
-    const authors = nameSeparate(answers.authors);
-    answers["authors"] = authors;
+    // const authors = nameSeparate(answers.authors);
+    // answers["authors"] = authors;
 
     // generate the badge
     const badgeURL = badge(answers.license);
